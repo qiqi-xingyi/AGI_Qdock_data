@@ -12,9 +12,11 @@ from typing import Any, Dict, List, Optional, Tuple
 # =========================
 # Hardcoded config (edit here)
 # =========================
-ROOT_DIR = Path(r"/Users/yuqizhang/Desktop/QDockBank/QDockBank")  # QDockBank root
-OUT_CSV  = Path(r"/Users/yuqizhang/Desktop/QDockBank/qdockbank_selected_sequences.csv")
-OUT_LOG  = Path(r"/Users/yuqizhang/Desktop/QDockBank/qdockbank_selected_sequences_skipped.csv")
+SCRIPT_DIR = Path(__file__).resolve().parent   # directory of this script
+
+ROOT_REL = Path("QDockBank")                  # relative to SCRIPT_DIR
+OUT_CSV_REL = Path("outputs/qdockbank_selected_sequences.csv")
+OUT_LOG_REL = Path("outputs/qdockbank_selected_sequences_skipped.csv")
 
 K = 5  # target length for long sequences
 
