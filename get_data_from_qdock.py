@@ -20,6 +20,10 @@ OUT_LOG_REL = Path("outputs/qdockbank_selected_sequences_skipped.csv")
 
 K = 5  # target length for long sequences
 
+ROOT_DIR = (SCRIPT_DIR / ROOT_REL).resolve()
+OUT_CSV = (SCRIPT_DIR / OUT_CSV_REL).resolve()
+OUT_LOG = (SCRIPT_DIR / OUT_LOG_REL).resolve()
+
 # =========================
 # Helpers
 # =========================
@@ -63,11 +67,7 @@ def extract_protein_info(meta: Dict[str, Any]) -> Optional[Dict[str, Any]]:
     }
 
 def choose_unique_sequence(sequence: str, selected_set: set) -> Tuple[Optional[str], str]:
-    """
-    全局唯一规则：
-    - len<=K：只能选原序列；若重复 -> 跳过
-    - len>K：从左到右滑窗找第一个不重复的 K-mer；若都重复 -> 跳过
-    """
+
     seq = sequence.strip()
     n = len(seq)
     if n == 0:
